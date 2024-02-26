@@ -1,0 +1,82 @@
+<html>
+<head>
+   
+    <title>Random Quote Generator</title>
+   
+</head>
+<body>
+<div class="style">
+
+<h1>Random Quote Generator</h1>
+        
+		<h2 ><span id="quote">Quote</span></h2>
+        <p id="author">~ Author</p>
+        <button id="submit">Get a quote</button>
+    </div>
+<script>
+
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': 'f1ccb53e1bmshd4fc7f777c418e4p1fb1aajsn721148832117',
+		'X-RapidAPI-Host': 'quotes-by-api-ninjas.p.rapidapi.com'
+	}
+};
+
+
+let quote=document.getElementById("quote");
+let author=document.getElementById("author");
+
+
+let getQuote=()=>{
+	fetch('https://api.quotable.io/random')
+	.then(data=>data.json())
+	.then((item)=>{
+		quote.innerHTML=item.content;
+		author.innerHTML=item.author;
+	});
+};
+
+submit.addEventListener("click",(e) => {
+	e.preventDefault()
+	getQuote(quote.data)
+	getAuthor(author.data)
+	});
+</script>
+<style>
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Courier New;
+  background: linear-gradient(lightgreen, lightblue);
+}
+
+.style {
+  background-color:rgb(25,255,217);
+  box-shadow: 0 6px 10px rgba(0,0,0,0.3);
+  padding: 30px;
+  border-radius: 50px;
+  width: 90%;
+  margin: 10px;
+  text-align: center;
+}
+
+
+.quote {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.author {
+  font-size: 25px;
+  margin: 10px;
+  font-style: italic;
+}
+
+
+
+</style>
+</body>
+</html>
